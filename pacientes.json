@@ -1,27 +1,11 @@
 [
 	{
-		"nombre": "Juan Ramón Limón Borrego",
-		"edad": 70,
-		"email": "Dolores.GranadoUrrutia@yahoo.com",
+		"nombre": "Paciente 1",
+		"apellido": "paci",
+		"edad": 33,
+		"email": "dxdd@gmasil.com",
+		"rol": "Paciente",
+		"password": "Ssss20",
 		"id": "1"
-	},
-	{
-		"nombre": "Juan Ramón Limón Borrego",
-		"edad": 70,
-		"email": "Doloresw.GranadoUrrutia@yahoo.com",
-		"id": "2"
-	},
-	{
-		"nombre": "Juan Ramón Limón Borrego",
-		"edad": 70,
-		"email": "Dolorddesw.GranadoUrrutia@yahoo.com",
-		"id": "3"
-	},
-	{
-		"nombre": "Juan Ramón Limón Borrego",
-		"apellido": "ffff",
-		"edad": 70,
-		"email": "Dogglorddesw.GranadoUrrutia@yahoo.com",
-		"id": "4"
 	}
 ]

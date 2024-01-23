@@ -25,6 +25,7 @@ class ModelPacientesMongoDB {
         }
         else {
             await CnxMongoDB.db.collection('pacientes').insertOne(paciente)
+            await CnxMongoDB.db.collection('usuarios').insertOne(paciente)            
             return paciente
         }
     }
@@ -32,8 +33,17 @@ class ModelPacientesMongoDB {
     actualizarPaciente = async (id, paciente) => {
         if (!CnxMongoDB.connection) return {}
 
+        const pacienteBusc = await this.mostrarPaciente(id)
+
         await CnxMongoDB.db.collection('pacientes').updateOne(
             { _id: new ObjectId(id) },
+            { $set: paciente }
+        )
+
+        const usuarioBusc = await CnxMongoDB.db.collection('usuarios').findOne({ email: pacienteBusc.email })
+           
+        await CnxMongoDB.db.collection('usuarios').updateOne(
+            { _id: usuarioBusc._id },
             { $set: paciente }
         )
 
@@ -46,6 +56,11 @@ class ModelPacientesMongoDB {
 
         const pacientesBorrado = await this.mostrarPaciente(id)
         await CnxMongoDB.db.collection('pacientes').deleteOne({ _id: new ObjectId(id) })
+
+        const usuarioBorrado = await CnxMongoDB.db.collection('usuarios').findOne({ email: pacientesBorrado.email })
+        await CnxMongoDB.db.collection('usuarios').deleteOne({ _id: usuarioBorrado._id })
+   
+        
         return pacientesBorrado
     }
 }

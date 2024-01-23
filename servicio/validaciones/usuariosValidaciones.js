@@ -6,6 +6,8 @@ export const validar = usuario => {
         apellido: Joi.string().min(3).max(30).required(),
         edad: Joi.number().min(0).max(100).required(),
         email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
+        //rol: Joi.string().required('Paciente'), 
+        rol: Joi.equal('Paciente', 'Profesional').required(),
         password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
         repeat_password: Joi.ref('password')
     })

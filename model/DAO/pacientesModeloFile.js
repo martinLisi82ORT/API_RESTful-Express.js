@@ -3,6 +3,7 @@ import fs from 'fs'
 class ModelPacienteFile {
     constructor() {
         this.nombreArchivo = 'pacientes.json'
+        this.nombreArchivoUser = 'usuarios.json'
     }
 
     leerArchivo = async nombre => {
@@ -45,7 +46,10 @@ class ModelPacienteFile {
             paciente.id = String(parseInt(pacientes[pacientes.length - 1]?.id || 0) + 1)
             paciente.edad = Number(paciente.edad)
             pacientes.push(paciente)
+            //Agrega lista Pacientes
             await this.escribirArchivo(this.nombreArchivo, pacientes)
+            //Agrega lista Usuarios
+            await this.escribirArchivo(this.nombreArchivoUser, pacientes)
 
             return paciente
         }
@@ -55,28 +59,46 @@ class ModelPacienteFile {
         paciente.id = id
 
         const pacientes = await this.leerArchivo(this.nombreArchivo)
+        const usuarios = await this.leerArchivo(this.nombreArchivoUser)
+
         const index = pacientes.findIndex(paciente => paciente.id === id)
         if (index != -1) {
+            //Actualiza lista de Pacientes
             const pacienteAnt = pacientes[index]
             const pacienteNuevo = { ...pacienteAnt, ...paciente }
             pacientes.splice(index, 1, pacienteNuevo)
             await this.escribirArchivo(this.nombreArchivo, pacientes)
+
+            //Actualiza lista de Usuarios
+            const indexUser = usuarios.findIndex(paciente => paciente.id === id)
+            usuarios.splice(indexUser, 1, pacienteNuevo)
+            await this.escribirArchivo(this.nombreArchivoUser, usuarios)
+
             return pacienteNuevo
         }
         else {
             pacientes.push(paciente)
             await this.escribirArchivo(this.nombreArchivo, pacientes)
+            await this.escribirArchivo(this.nombreArchivoUser, pacientes)
             return paciente
         }
     }
 
     eliminarPaciente = async id => {
+        //Elimina de lista de Pacientes
         let paciente = {}
         const pacientes = await this.leerArchivo(this.nombreArchivo)
         const index = pacientes.findIndex(paciente => paciente.id === id)
         if (index != -1) {
             paciente = pacientes.splice(index, 1)[0]
             await this.escribirArchivo(this.nombreArchivo, pacientes)
+
+            //Elimina de lista de Usuarios
+            let usuario = {}
+            const usuariosPac = await this.leerArchivo(this.nombreArchivoUser)
+            const indexPac = usuariosPac.findIndex(usuario => usuario.email === paciente.email)
+            usuario = usuariosPac.splice(indexPac, 1)[0]
+            await this.escribirArchivo(this.nombreArchivoUser, usuariosPac)
         }
         return paciente
     }

@@ -25,6 +25,7 @@ class ModelProfesionalMongoDB {
         }
         else {
             await CnxMongoDB.db.collection('profesionales').insertOne(profesional)
+            await CnxMongoDB.db.collection('usuarios').insertOne(profesional)
             return profesional
         }
     }
@@ -32,8 +33,17 @@ class ModelProfesionalMongoDB {
     actualizarProfesional = async (id, profesional) => {
         if (!CnxMongoDB.connection) return {}
 
+        const profesionalBusc = await this.mostrarProfesional(id)
+
         await CnxMongoDB.db.collection('profesionales').updateOne(
             { _id: new ObjectId(id) },
+            { $set: profesional }
+        )
+
+        const usuarioBusc = await CnxMongoDB.db.collection('usuarios').findOne({ email: profesionalBusc.email })
+
+        await CnxMongoDB.db.collection('usuarios').updateOne(
+            { _id: usuarioBusc._id },
             { $set: profesional }
         )
 
@@ -46,6 +56,10 @@ class ModelProfesionalMongoDB {
 
         const profesionalBorrado = await this.mostrarProfesional(id)
         await CnxMongoDB.db.collection('profesionales').deleteOne({ _id: new ObjectId(id) })
+
+        const usuarioBorrado = await CnxMongoDB.db.collection('usuarios').findOne({ email: profesionalBorrado.email })
+        await CnxMongoDB.db.collection('usuarios').deleteOne({ _id: usuarioBorrado._id })
+
         return profesionalBorrado
     }
 }

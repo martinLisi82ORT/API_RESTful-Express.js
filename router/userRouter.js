@@ -8,6 +8,7 @@ class RouterUser {
     }
 
     start() {
+        this.router.get('/', this.controladorUser.mostrarUser)
         this.router.get('/user/:id?', this.controladorUser.mostrarUser)
         this.router.get('/cantidadUsers', this.controladorUser.cantidadUser)
         this.router.post('/login', this.controladorUser.loginUser)
