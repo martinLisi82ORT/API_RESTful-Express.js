@@ -7,6 +7,34 @@ Todos los recursos de la API pueden ser consumidos mediante peticiones HTTP (POS
 Configurado con MongoDB.
 
 
+## TEST:
+### Test Pacientes
+
+Scripts para ejecutar: npm run test-gen-pac 
+
+### Test Profesionales
+Scripts para ejecutar: npm run test-gen-prof
+
+### Test del Servidor de forma externa con Supertest:
+#### **Se debe tener levantado el servidor (npm start)**
+Scripts para ejecutar: npm run test-manual
+
+### Test de integracion del Servidor
+#### **Se debe tener levantado el servidor (npm start)**
+Scripts para ejecutar: npm run test-api-ext
+
+### Test Servidor como instancia
+#### **Se debe tener levantado el servidor (npm start)**
+Scripts para ejecutar: npm run test-api-int
+
+### Test General
+#### **Se debe tener levantado el servidor (npm start)**
+Scripts para ejecutar: npm run test
+
+
+---
+
+
 ### Swagger: 
 https://editor.swagger.io/
 
