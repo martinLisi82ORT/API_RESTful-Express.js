@@ -9,7 +9,7 @@ class Server {
     constructor(port, persistencia) {
         this.port = port
         this.persistencia = persistencia
-        
+
         this.app = express()
         this.server = null
     }
@@ -46,6 +46,8 @@ class Server {
         const PORT = this.port
         this.server = this.app.listen(PORT, () => console.log(`Servidor express escuchando en http://localhost:${PORT}`))
         this.server.on('error', error => console.log('Servidor express en error:', error))
+
+        return this.app
     }
 
     async stop() {

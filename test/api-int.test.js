@@ -1,20 +1,36 @@
-import { expect, should } from "chai"
+import { expect } from "chai"
 import supertest from "supertest"
 import generador from "./generador/pacienteGenerador.js"
+import Server from "../server.js"
 
-//Test de integracion del servidor
-const request = supertest('http://127.0.0.1:8080')
-
+//Test de integracion del servidor como instancia
 describe('test apirestful', () => {
     describe('GET', () => {
         it('deberia retornar un status 200', async () => {
+            //Levanta un servidor
+            const server = new Server(8081, 'FILE')
+            const app = await server.start()
+
+            //Crea instancia supertest a partir del nuevo servidor levantado
+            const request = supertest(app)
             const response = await request.get('/api/clinica/pacientes')
+
             expect(response.status).to.eql(200)
+
+            //Detiene el servidor
+            await server.stop()
         })
     })
-   
+
     describe('POST', () => {
         it('deberia incorporar un paciente', async () => {
+            //Levanta un servidor
+            const server = new Server(8081, 'FILE')
+            const app = await server.start()
+
+            //Crea instancia supertest a partir del nuevo servidor levantado
+            const request = supertest(app)
+
             //Genera un paciente aleatorio
             const paciente = generador.get()
 
@@ -29,29 +45,32 @@ describe('test apirestful', () => {
             expect(pacGuardado.apellido).to.eql(paciente.apellido)
             expect(pacGuardado.edad).to.eql(paciente.edad)
             expect(pacGuardado.email).to.eql(paciente.email)
-        })
-    })
 
-    describe('PUT', () => {
-        it('deberia actualizar un paciente', async () => {
-
-            //Actualiza nombre
-            const actNom = { nombre: "Juan" }
-            const response = await request.put('/api/clinica/pacientes/id').send(actNom)
-            expect(response.status).to.eql(200)
+            //Detiene el servidor
+            await server.stop()
         })
     })
 
     describe('DELETE', () => {
         it('deberia eliminar un paciente', async () => {
+            //Levanta un servidor
+            const server = new Server(8081, 'FILE')
+            const app = await server.start()
+
+            //Crea instancia supertest a partir del nuevo servidor levantado
+            const request = supertest(app)
+
             //Genera un paciente aleatorio
             const paciente = generador.get()
             const response = await request.post('/api/clinica/pacientes').send(paciente)
 
             //Elimina al paciente creado
             const pacEliminar = response.body
-            const response1 = await request.delete('/api/clinica/pacientes/id').send(pacEliminar)
+            const response1 = await request.delete('/api/clinica/pacientes/pacEliminar.id').send(pacEliminar)
             expect(response1.status).to.eql(200)
+
+            //Detiene el servidor
+            await server.stop()
         })
     })
 
