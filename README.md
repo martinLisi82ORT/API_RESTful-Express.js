@@ -11,6 +11,9 @@ Ejemplo del archivo .env:
 STRCNX = 'mongodb+srv:// *********** <---- (credenciales)         
 BASE = '*******' <---- (nombre de la Base de Datos)
 
+
+Mediante distintas peticiones GET, la aplicación también permite, desde el router de pacientes (http://localhost:8080/api/clinica/pacientes), la búsqueda de un paciente por ID (_/buscarPacientePorId/:id_), el promedio de edad (_/promedioEdad_) y la cantidad de pacientes (_/cantidadPacientes_). 
+
 ---
 
 ## TEST:
