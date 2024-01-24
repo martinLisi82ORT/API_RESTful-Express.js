@@ -9,7 +9,7 @@ class RouterProfesional {
 
     start() {
         this.router.get('/', this.controladorProf.mostrarProfesional)
-        this.router.get('/buscarProfesionalPorId:id?', this.controladorProf.mostrarProfesionalPorID)
+        this.router.get('/:id?', this.controladorProf.mostrarProfesionalPorID)
         this.router.get('/cantidadProfesionales', this.controladorProf.cantidadProfesional)
         this.router.get('/especialidad/:id', this.controladorProf.mostrarEspecialidad)
         this.router.post('/', this.controladorProf.agregarProfesional)

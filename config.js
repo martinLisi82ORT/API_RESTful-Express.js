@@ -1,8 +1,4 @@
 import dotenv from 'dotenv'
-// const PORT = 8080
-// const MODO_PERSISTENCIA = 'MEM'  // 'MEM', 'FILE', 'MONGODB'
-// const STRCNX = 'mongodb://127.0.0.1'
-// const BASE = 'mibase'
 
 dotenv.config()
 

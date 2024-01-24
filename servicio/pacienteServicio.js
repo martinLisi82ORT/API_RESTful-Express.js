@@ -9,6 +9,26 @@ class Servicio {
 
     mostrarPaciente = async id => {
         const paciente = await this.model.mostrarPaciente(id)
+        const pacien = paciente.map(function (object) {
+            var objeto = {
+                "nombre": object.nombre,
+                "apellido": object.apellido,
+                "edad": object.edad,
+                "email": object.email,
+                "rol": object.rol,
+                "id": object.id
+            }
+            return objeto
+        })
+        return pacien
+    }
+
+    mostrarPacientePorID = async id => {
+        const pacientes = await this.mostrarPaciente()
+        var paciente = pacientes.find(paciente => paciente.id === id)
+        if (paciente == undefined) {
+            paciente = {}
+        }
         return paciente
     }
 

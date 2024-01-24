@@ -9,6 +9,27 @@ class ServicioProfesional {
 
     mostrarProfesional = async id => {
         const profesional = await this.model.mostrarProfesional(id)
+        const profes = profesional.map(function (object) {
+            var objeto = {
+                "nombre": object.nombre,
+                "apellido": object.apellido,
+                "edad": object.edad,
+                "email": object.email,
+                "rol": object.rol,
+                "especialidad": object.especialidad,
+                "id": object.id
+            }
+            return objeto
+        })
+        return profes
+    }
+
+    mostrarProfesionalPorID = async id => {
+        const profesionales = await this.mostrarProfesional()
+        var profesional = profesionales.find(profesional => profesional.id === id)
+        if (profesional == undefined) {
+            profesional = {}
+        }
         return profesional
     }
 

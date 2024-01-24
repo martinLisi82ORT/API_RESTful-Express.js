@@ -10,10 +10,10 @@ class ControladorProfesional {
         const profesionales = await this.servicioProf.mostrarProfesional(id)
         res.json(profesionales)
     }
-    
+
     mostrarProfesionalPorID = async (req, res) => {
         const { id } = req.params
-        const profesionales = await this.servicioProf.mostrarProfesional(id)
+        const profesionales = await this.servicioProf.mostrarProfesionalPorID(id)
         res.json(profesionales)
     }
 

@@ -3,17 +3,28 @@
 		"nombre": "Profesional 1",
 		"apellido": "paci",
 		"edad": 33,
-		"email": "dxdvd@gmasil.com",
+		"email": "dxdcdd@gmasil.com",
 		"rol": "Profesional",
+		"especialidad": "gggggg",
 		"password": "Ssss20",
 		"id": "2"
 	},
 	{
-		"nombre": "Profesional 22",
+		"nombre": "Profesional 1",
 		"apellido": "paci",
 		"edad": 33,
-		"email": "dcvdxdvd@gmasil.com",
+		"email": "dxdcdrd@gmasil.com",
 		"rol": "Profesional",
+		"especialidad": "rrg",
+		"password": "Ssss20",
+		"id": "3"
+	},
+	{
+		"nombre": "Profesional 1",
+		"apellido": "paci",
+		"edad": 33,
+		"email": "dxdecdrd@gmasil.com",
+		"especialidad": "eeeeg",
 		"id": "4"
 	}
 ]

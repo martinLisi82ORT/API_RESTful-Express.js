@@ -13,15 +13,13 @@ class ControladorPaciente {
 
     mostrarPacientePorID = async (req, res) => {
         const { id } = req.params
-        const pacientes = await this.servicio.mostrarPaciente(id)
+        const pacientes = await this.servicio.mostrarPacientePorID(id)
         res.json(pacientes)
     }
 
     calcularPromedioEdad = async (req, res) => {
-
         const promedioEdad = await this.servicio.calcularPromedioEdad()
         res.json({ promedioEdad })
-
     }
 
     devolverCantidad = async (req, res) => {

@@ -9,38 +9,12 @@
 		"id": "1"
 	},
 	{
-		"nombre": "Lorena",
-		"apellido": "Segovia Carranza",
-		"edad": 57,
-		"email": "Federico_LozadaRodriguez20@gmail.com",
-		"id": "2"
-	},
-	{
-		"nombre": "Marcos",
-		"apellido": "Leal Guajardo",
-		"edad": 84,
-		"email": "Oscar74@hotmail.com",
-		"id": "3"
-	},
-	{
-		"nombre": "Nicolás",
-		"apellido": "Córdova Domínguez",
-		"edad": 62,
-		"email": "Juana18@gmail.com",
-		"id": "4"
-	},
-	{
-		"nombre": "Mónica",
-		"apellido": "Báez Maya",
-		"edad": 100,
-		"email": "Daniel_MirandaGomez@hotmail.com",
-		"id": "5"
-	},
-	{
-		"nombre": "Inés",
-		"apellido": "Rendón Botello",
-		"edad": 61,
-		"email": "Reina.AnayaZamudio@yahoo.com",
-		"id": "6"
+		"nombre": "Paciente 14",
+		"apellido": "paci",
+		"edad": 33,
+		"email": "dxdd@gmasil.com",
+		"rol": "Paciente",
+		"password": "Ssss20",
+		"id": "14"
 	}
 ]
