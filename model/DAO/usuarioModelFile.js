@@ -44,8 +44,7 @@ class ModelUsuarioFile {
         await fs.promises.writeFile(nombre, JSON.stringify(usuarios, null, '\t'))
     }
 
-    mostrarUser = async id => {
-
+    mostrarUser = async id => {      
         try {
             const usuarios = await this.leerArchivo(this.nombreArchivo)
             if (id) {

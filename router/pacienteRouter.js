@@ -9,7 +9,7 @@ class RouterPaciente {
 
     start() {
         this.router.get('/', this.controladorPac.mostrarPaciente)
-        this.router.get('/:id?', this.controladorPac.mostrarPacientePorID)
+        this.router.get('/paciente/:id?', this.controladorPac.mostrarPacientePorID)
         this.router.get('/promedioEdad', this.controladorPac.calcularPromedioEdad)
         this.router.get('/cantidadPacientes', this.controladorPac.devolverCantidad)
         this.router.post('/', this.controladorPac.agregarPaciente)

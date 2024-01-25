@@ -38,13 +38,15 @@ describe('test apirestful', () => {
             expect(response.status).to.eql(200)
 
             const pacGuardado = response.body
-            expect(pacGuardado).to.include.keys('nombre', 'apellido', 'edad', 'email')
+            expect(pacGuardado).to.include.keys('nombre', 'apellido', 'edad', 'email', 'rol', 'password')
 
             //Compara si el pasiente creado corresponde a la respuesta del servidor
             expect(pacGuardado.nombre).to.eql(paciente.nombre)
             expect(pacGuardado.apellido).to.eql(paciente.apellido)
             expect(pacGuardado.edad).to.eql(paciente.edad)
             expect(pacGuardado.email).to.eql(paciente.email)
+            expect(pacGuardado.rol).to.eql(paciente.rol)
+            expect(pacGuardado.password).to.eql(paciente.password)
 
             //Detiene el servidor
             await server.stop()

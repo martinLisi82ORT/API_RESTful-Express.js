@@ -44,12 +44,15 @@ class ModelPacienteFile {
         }
         else {
             paciente.id = String(parseInt(pacientes[pacientes.length - 1]?.id || 0) + 1)
-            paciente.edad = Number(paciente.edad)
+          //  paciente.edad = Number(paciente.edad)
             pacientes.push(paciente)
             //Agrega lista Pacientes
             await this.escribirArchivo(this.nombreArchivo, pacientes)
+
             //Agrega lista Usuarios
-            await this.escribirArchivo(this.nombreArchivoUser, pacientes)
+            const usuarios = await this.leerArchivo(this.nombreArchivoUser)
+            usuarios.push(paciente)
+            await this.escribirArchivo(this.nombreArchivoUser, usuarios)
 
             return paciente
         }
@@ -59,7 +62,7 @@ class ModelPacienteFile {
         paciente.id = id
 
         const pacientes = await this.leerArchivo(this.nombreArchivo)
-        const usuarios = await this.leerArchivo(this.nombreArchivoUser)
+       
 
         const index = pacientes.findIndex(paciente => paciente.id === id)
         if (index != -1) {
@@ -71,6 +74,7 @@ class ModelPacienteFile {
 
             //Actualiza lista de Usuarios
             const indexUser = usuarios.findIndex(paciente => paciente.id === id)
+            const usuarios = await this.leerArchivo(this.nombreArchivoUser)
             usuarios.splice(indexUser, 1, pacienteNuevo)
             await this.escribirArchivo(this.nombreArchivoUser, usuarios)
 

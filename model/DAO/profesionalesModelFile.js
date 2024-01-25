@@ -44,13 +44,15 @@ class ModeloProfesionalFile {
             return { error: 'Usuario ya registrado' }
         }
         else {
-            profesional.id = String(parseInt(profesionales[profesionales.length - 1]?.id || 0) + 1)
-           // profesional.especialidad = String(profesional.especialidad)
+            profesional.id = String(parseInt(profesionales[profesionales.length - 1]?.id || 0) + 1)                      
             profesionales.push(profesional)
             //Agrega lista Profesionales
             await this.escribirArchivo(this.nombreArchivo, profesionales)
+
             //Agrega lista Usuarios
-            await this.escribirArchivo(this.nombreArchivoUser, profesionales)
+            const usuarios = await this.leerArchivo(this.nombreArchivoUser)
+            usuarios.push(profesional)
+            await this.escribirArchivo(this.nombreArchivoUser, usuarios)
 
             return profesional
         }
@@ -70,8 +72,10 @@ class ModeloProfesionalFile {
 
             //Actualiza lista de Usuarios
             const indexUser = profesionales.findIndex(profesional => profesional.id === id)
-            profesionales.splice(indexUser, 1, profesionalNuevo)
-            await this.escribirArchivo(this.nombreArchivoUser, profesionales)
+            const usuarios = await this.leerArchivo(this.nombreArchivoUser)          
+            usuarios.splice(indexUser, 1, profesionalNuevo)
+            //usuarios.push(profesional)
+            await this.escribirArchivo(this.nombreArchivoUser, usuarios)
 
             return profesionalNuevo
         }

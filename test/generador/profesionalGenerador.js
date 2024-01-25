@@ -4,7 +4,9 @@ const get = _ => ({
     nombre: faker.person.firstName(),
     apellido: faker.person.lastName(),
     edad: faker.number.int({ min: 1, max: 100 }),
-    email: faker.internet.email()
+    rol: "Profesiona",
+    email: faker.internet.email(),
+    password: faker.internet.password({ pattern: /[A-Z]/ })
 })
 
 export default {

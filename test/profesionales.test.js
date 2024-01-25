@@ -5,7 +5,6 @@ describe('**** Test del generador de Profesional ****', () => {
     
     it('el profesional debe contener los campos nombre, apellido, edad y email', () => {
        const profesional = generador.get()
-      // console.log(profesional)
 
        expect(profesional).to.include.keys('nombre', 'apellido','edad','email')
     })
@@ -13,8 +12,6 @@ describe('**** Test del generador de Profesional ****', () => {
     it('deberia generar profesionales aleatorios', () => {
         const profesional1 = generador.get()
         const profesional2 = generador.get()
-       // console.log(profesional1)
-       // console.log(profesional2)
 
         expect(profesional1.nombre).not.to.eql(profesional2.nombre)
         expect(profesional1.apellido).not.to.eql(profesional2.apellido)
