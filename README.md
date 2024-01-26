@@ -6,17 +6,30 @@ Configurado con MongoDB.
 
 Aplicación web que permite el manejo de Usuarios de un consultorio médico :man_health_worker: :hospital:. La aplicación permite la creación de un Usuario asignándole un rol de "Paciente" o "Profesional. El mismo será guardado en dos listas, una de Usuarios y otra de Paciente o Profesionales dependiendo del rol asignado (la app tiene 3 listas en total). Permite el acceso del usuario con mail y contraseña validando dichos datos en la Base de Datos. La misma está configurada con una Base de Datos en MongoDB. Por cuestiones de seguridad de GitHub, no se sube el archivo .env con las credenciales de MongoDB, por lo tanto la aplicación cuenta también con un almacenamiento interno File System y la configuración necesaria para pasar de una memoria File System a una en MongoDB. Para realizar pruebas y test se puede usar perfectamente esta memoria interna. Si se desea conectar a una Base de Datos en MongoDB solo se debe crear un archivo .env y colocar las credenciales necesarias.
 
-Ejemplo del archivo .env:
+**Ejemplo del archivo .env:**
 > MODO_PERSISTENCIA = 'MONGODB'  
 STRCNX = 'mongodb+srv:// *********** <---- (credenciales)         
 BASE = '*******' <---- (nombre de la Base de Datos)
 
+**URL base:** 
+`http://localhost:${PORT}`
 
-Mediante distintas peticiones GET, la aplicación también permite, desde el router de pacientes (http://localhost:8080/api/clinica/pacientes), la búsqueda de un paciente por ID (_/buscarPacientePorId/:id_), el promedio de edad (_/promedioEdad_) y la cantidad de pacientes (_/cantidadPacientes_). 
+
+Mediante distintas peticiones GET la aplicación permite, desde el router de pacientes: el listado completo de Pacientes (/), la búsqueda de un paciente por ID (/paciente/:id?), el promedio de edad (/promedioEdad) y la cantidad de pacientes (/cantidadPacientes).
+
+Desde el router de profesionales: el listado completo de profesionales (/), la búsqueda de un profesional por ID (/profesionales/:id?), la especialidad (/especialidad/:id) y la cantidad de profesionales (/cantidadProfesionales). 
+
+Además cada router contiene las peticiones POST (agregado), PUT (modificación) y DELETE (eliminación).
+
+También cuenta con distintos test de prueba detallados más abajo y la documentación necesaria.
+
+### :page_facing_up: Documentacion:
+
+https://documenter.getpostman.com/view/32556955/2s9YypFPQC
+
 
 ---
-
-## TEST:
+## TEST de prueba:
 **Test Pacientes:**
 
 * Scripts para ejecutar: _npm run test-gen-pac_ 
@@ -36,17 +49,6 @@ Mediante distintas peticiones GET, la aplicación también permite, desde el rou
 
 **Test General:** Se debe tener **_levantado_** el servidor (npm start)
 * Scripts para ejecutar: ***npm run test***
-
-
----
-
-
-### Swagger: 
-https://editor.swagger.io/
-
-### Json
-[clinica-docs.json](https://github.com/chiaracx/TP2_tpfinal/files/13453297/clinica-docs.json)
-
 
 ---
 
