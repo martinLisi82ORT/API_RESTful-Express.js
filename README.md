@@ -11,15 +11,16 @@ Aplicación web que permite el manejo de Usuarios de un consultorio médico :man
 STRCNX = 'mongodb+srv:// *********** <---- (credenciales)         
 BASE = '*******' <---- (nombre de la Base de Datos)
 
+
 **URL base:** 
 `http://localhost:${PORT}`
 
 
-Mediante distintas peticiones GET la aplicación permite, desde el router de pacientes: el listado completo de Pacientes (/), la búsqueda de un paciente por ID (/paciente/:id?), el promedio de edad (/promedioEdad) y la cantidad de pacientes (/cantidadPacientes).
+Mediante distintas peticiones **GET** la aplicación permite, desde el router de pacientes: el listado completo de Pacientes (/), la búsqueda de un paciente por ID (/paciente/:id?), el promedio de edad (/promedioEdad) y la cantidad de pacientes (/cantidadPacientes).
 
 Desde el router de profesionales: el listado completo de profesionales (/), la búsqueda de un profesional por ID (/profesionales/:id?), la especialidad (/especialidad/:id) y la cantidad de profesionales (/cantidadProfesionales). 
 
-Además cada router contiene las peticiones POST (agregado), PUT (modificación) y DELETE (eliminación).
+Además cada router contiene las peticiones **POST** (agregado), **PUT** (modificación) y **DELETE** (eliminación).
 
 También cuenta con distintos test de prueba detallados más abajo y la documentación necesaria.
 
