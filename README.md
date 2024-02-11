@@ -52,6 +52,8 @@ https://documenter.getpostman.com/view/32556955/2s9YypFPQC
 * Scripts para ejecutar: ***npm run test***
 
 ---
+### Herramientas utilizadas:
+JavaScript | Express.Js | Node.Js | MongoDB | VSCode 
 
 <div align="center">
   
