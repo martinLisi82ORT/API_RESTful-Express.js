@@ -20,7 +20,7 @@ Mediante distintas peticiones **GET** la aplicación permite, desde el router de
 
 Desde el router de profesionales: el listado completo de profesionales (/), la búsqueda de un profesional por ID (/profesionales/:id?), la especialidad (/especialidad/:id) y la cantidad de profesionales (/cantidadProfesionales). 
 
-Además cada router contiene las peticiones **POST** (agregado), **PUT** (modificación) y **DELETE** cccccccc.
+Además cada router contiene las peticiones **POST** (agregado), **PUT** (modificación) y **DELETE**.
 
 También cuenta con distintos test de prueba detallados más abajo y la documentación necesaria.
 
